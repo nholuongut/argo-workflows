@@ -1,0 +1,15 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: basic
+spec:
+  schedule: "* * * * *"
+  workflowMetadata:
+    labels:
+      workflows.nholuongut.io/test: "true"
+  workflowSpec:
+    entrypoint: main
+    templates:
+      - name: main
+        container:
+          image: nholuongut/argosay:v2

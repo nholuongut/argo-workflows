@@ -1,0 +1,13 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: pause-before-
+spec:
+  entrypoint: whalesay
+  templates:
+    - name: whalesay
+      container:
+        image: nholuongut/argosay:v2
+        env:
+          - name: ARGO_DEBUG_PAUSE_BEFORE
+            value: 'true'

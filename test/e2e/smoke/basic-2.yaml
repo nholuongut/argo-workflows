@@ -1,0 +1,10 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: Workflow
+metadata:
+  name: basic-2
+spec:
+  entrypoint: run-workflow
+  templates:
+    - name: run-workflow
+      container:
+        image: nholuongut/argosay:v2

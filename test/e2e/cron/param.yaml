@@ -1,0 +1,30 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: test-cron-wf-basic-param
+  labels:
+    workflows.nholuongut.io/test: "true"
+spec:
+  schedule: "* * * * *"
+  concurrencyPolicy: "Allow"
+  startingDeadlineSeconds: 0
+  successfulJobsHistoryLimit: 4
+  failedJobsHistoryLimit: 2
+  workflowMetadata:
+    labels:
+      workflows.nholuongut.io/test: "true"
+  workflowSpec:
+    entrypoint: whalesay
+    arguments:
+      parameters:
+        - name: message
+          value: "foo"
+    templates:
+      - name: whalesay
+        inputs:
+          parameters:
+            - name: message
+        container:
+          image: python:alpine3.6
+          command: ["sh", -c]
+          args: ["echo {{inputs.parameters.message}}"]

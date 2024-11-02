@@ -1,0 +1,9 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: Workflow
+metadata:
+  name: wellformed
+  labels:
+    workflows.nholuongut.io/test: "true"
+spec:
+  workflowTemplateRef:
+    name: wellformed

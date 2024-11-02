@@ -1,0 +1,20 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: parallel-
+  labels:
+    workflows.nholuongut.io/test: "true"
+  annotations:
+    workflows.nholuongut.io/description: |
+      This workflow demonstrates running a parallel containers within a single pod.
+    workflows.nholuongut.io/version: ">= 3.1.0"
+spec:
+  entrypoint: main
+  templates:
+    - name: main
+      containerSet:
+        containers:
+          - name: a
+            image: nholuongut/argosay:v2
+          - name: b
+            image: nholuongut/argosay:v2

@@ -1,0 +1,15 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: sidecar-
+spec:
+  entrypoint: main
+  templates:
+    - name: main
+      container:
+        image: nholuongut/argosay:v1
+      sidecars:
+        - name: sidecar
+          image: nholuongut/argosay:v1
+          command: [ sh, -c ]
+          args: [ "sleep 999" ]

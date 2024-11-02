@@ -1,0 +1,25 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: sequence-
+  labels:
+    workflows.nholuongut.io/test: "true"
+    workflows.nholuongut.io/container-runtime-executor: emissary
+  annotations:
+    workflows.nholuongut.io/description: |
+      This workflow demonstrates running a sequence of containers within a single pod.
+    workflows.nholuongut.io/version: ">= 3.1.0"
+spec:
+  entrypoint: main
+  templates:
+    - name: main
+      containerSet:
+        containers:
+          - name: a
+            image: nholuongut/argosay:v2
+          - name: b
+            image: nholuongut/argosay:v2
+            dependencies: ["a"]
+          - name: c
+            image: nholuongut/argosay:v2
+            dependencies: ["b"]

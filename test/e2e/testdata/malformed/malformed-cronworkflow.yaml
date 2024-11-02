@@ -1,0 +1,11 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: CronWorkflow
+metadata:
+  name: malformed
+  labels:
+    workflows.nholuongut.io/test: malformed
+spec:
+  workflowSpec:
+    arguments:
+      parameters:
+        someParam: "Hello, world!"

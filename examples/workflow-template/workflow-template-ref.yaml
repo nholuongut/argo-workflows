@@ -1,0 +1,8 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: workflow-template-hello-world-
+spec:
+  workflowTemplateRef:
+    name: workflow-template-submittable
+

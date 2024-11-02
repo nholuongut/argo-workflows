@@ -1,0 +1,23 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: k8s-patch-
+  labels:
+    workflows.nholuongut.io/test: "true"
+  annotations:
+    workflows.nholuongut.io/description: |
+      This example shows a more advanced patch with json mergeStrategy
+spec:
+  entrypoint: main
+  templates:
+  - name: main
+    resource:
+      action: patch
+      mergeStrategy: json
+      flags:
+      - pod
+      - "{{pod.name}}"
+      manifest: |
+        - op: add
+          path: /metadata/annotations/foo
+          value: bar

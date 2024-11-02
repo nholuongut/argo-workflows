@@ -1,0 +1,12 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: ClusterWorkflowTemplate
+metadata:
+  name: wellformed
+  labels:
+    workflows.nholuongut.io/test: "true"
+spec:
+  entrypoint: main
+  templates:
+    - name: main
+      container:
+        image: nholuongut/argosay:v2

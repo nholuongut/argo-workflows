@@ -1,0 +1,25 @@
+# Just enough permissions to submit a workflow template.
+# You could tighten this further (but perhaps impractically) by using `resourceNames`
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: submit-workflow-template
+rules:
+  - apiGroups:
+      - nholuongut.io
+    resources:
+      - workfloweventbindings
+    verbs:
+      - list
+  - apiGroups:
+      - nholuongut.io
+    resources:
+      - workflowtemplates
+    verbs:
+      - get
+  - apiGroups:
+      - nholuongut.io
+    resources:
+      - workflows
+    verbs:
+      - create

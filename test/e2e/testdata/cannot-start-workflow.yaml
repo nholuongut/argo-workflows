@@ -1,0 +1,12 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: cannot-start-
+spec:
+  entrypoint: main
+  templates:
+    - name: main
+      container:
+        image: nholuongut/argosay:v2
+        # this cannot start
+        command: [ invalid ]

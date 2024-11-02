@@ -1,0 +1,11 @@
+apiVersion: nholuongut.io/v1alpha1
+kind: Workflow
+metadata:
+  name: ui-workflow-error
+  namespace: argo
+spec:
+  entrypoint: main
+  templates:
+    - name: noop
+  workflowTemplateRef:
+    name: not-exists
